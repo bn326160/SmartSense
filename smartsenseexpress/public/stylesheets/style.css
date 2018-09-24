@@ -16,8 +16,9 @@ a {
   -o-background-size: cover;
 }
 
-/*.jumbotron {
-  opacity: 0.6;
+.jumbotron {
+  background: rgba(204, 204, 204, 0.8);
+  /*opacity: 0.9;
   background-image: url("../images/jumbotron-bg.jpg");
   background-color: #17234E;
   margin-bottom: 0;`enter code here`
@@ -25,6 +26,6 @@ a {
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
-  background-size: cover;
-}*/
+  background-size: cover;*/
+}
 
