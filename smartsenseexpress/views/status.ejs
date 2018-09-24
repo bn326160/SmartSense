@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+
+<h1><%= title %></h1>
+<p>Welcome to Status page</p>
+Status: <%= status %>
+<script>
+    const ws = new WebSocket('wss://' + 'smartsense.eu-gb.mybluemix.net' + '/ws/alerts');
+    ws.addEventListener('open', function(){
+        console.log(`Heyy, we're connected`);
+    });
+    ws.addEventListener('message', function(e){
+        console.log(`Hey, got a message`, e);
+        status="All ok"
+    })
+    ws.addEventListener('error', function(err){
+        console.log('Hey, something went wrong', err);
+    });
+</script>
+</body>
+</html>
