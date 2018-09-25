@@ -13,13 +13,13 @@ router.get('/', function(req, res, next) {
     client.create('authorization', {
         type: 'temporary',
         securables: [
-            '7af23fd3-1166-46cb-bd81-cda8fe6c1590',
+            'dd840415-aef7-4e90-9b8e-e8220dbba7eb',
             '134be29b-63ff-4b1d-8c0c-9950c0642ccb'
         ],
         expiry: new Date(new Date().getTime() + 300 * 1000)
     }).then(function(result){
         console.log(result);
-        res.render('dashboard', {
+        res.render('dashboard2', {
             title: 'Dashboard',
             key: result.id,
             token: result.token

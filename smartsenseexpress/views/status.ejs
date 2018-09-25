@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
 <!--Navbar-->
@@ -33,7 +34,8 @@
 <!-- Content -->
 <div class="alert alert-success" role="alert">All systems are currently stable.</div>
 
-<h1>Leeds <small><span class="badge badge-success">Stable</span></small></h1>
+<h2>Internal <small><span class="badge badge-success">Stable</span></small></h2>
+<h3>Leeds <small><span class="badge badge-success">Stable</span></small></h3>
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingOne">
@@ -46,18 +48,9 @@
 
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-                Temperature:
-                <div class="progress">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20°C</div>
-                </div>
-                Vibration:
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">Machine on - Normal operation</div>
-                </div>
-                Humidity:
-                <div class="progress">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">No leaks detected</div>
-                </div>
+                Temperature: <i id="1temp_ok" class="fas fa-thermometer-half green"></i> <i id="1temp_hot" class="fas fa-thermometer-full red"></i>
+                Vibration: <i id="1vibr_ok" class="fas fa-signature green"></i> <i id="1vibr_high" class="fas fa-signature red"></i>
+                Oil: <i id="1oil_ok" class="fas fa-tint green"></i> <i id="1oil_leak" class="fas fa-tint red"></i>
             </div>
         </div>
     </div>
@@ -71,25 +64,16 @@
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
-                Temperature:
-                <div class="progress">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 21%" aria-valuenow="21" aria-valuemin="0" aria-valuemax="100">21°C</div>
-                </div>
-                Vibration:
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">Machine on - Normal operation</div>
-                </div>
-                Humidity:
-                <div class="progress">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 4%" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">No leaks detected</div>
-                </div>
+                Temperature: <i class="fas fa-thermometer-half green"></i>
+                Vibration: <i class="fas fa-signature green"></i>
+                Oil: <i class="fas fa-tint green"></i>
             </div>
         </div>
     </div>
 </div>
 
 <br>
-<h1>Glasgow <small><span class="badge badge-info">Under Construction</span></small></h1>
+<h3>Glasgow <small><span class="badge badge-info">Under Construction</span></small></h3>
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingThree">
@@ -101,7 +85,41 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                Temperature: <i class="fas fa-thermometer-full red"></i>
+                Vibration: <i class="fas fa-signature red"></i>
+                Oil: <i class="fas fa-tint red"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<h2>Client systems</h2>
+
+<div id="client_ok" class="alert alert-primary" role="alert">
+    No alerts on client systems
+</div>
+<div id="client_warning" class="alert alert-warning" role="alert">
+    Check Ace Chemicals status!
+</div>
+<div id="client_danger" class="alert alert-danger" role="alert">
+    Danger at Ace Chemicals!
+</div>
+
+<div class="accordion" id="accordionClient">
+    <div class="card">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    Ace Chemicals <span class="badge badge-dark">Offline</span>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" aria-expanded="true" data-parent="#accordionExample">
+            <div class="card-body">
+                Temperature: <i id="2temp_ok" class="fas fa-thermometer-half green"></i> <i id="2temp_hot" class="fas fa-thermometer-full red"></i>
+                Vibration: <i id="2vibr_ok" class="fas fa-signature green"></i> <i id="2vibr_high" class="fas fa-signature red"></i>
+                Oil: <i id="2oil_ok" class="fas fa-tint green"></i> <i id="2oil_leak" class="fas fa-tint red"></i>
             </div>
         </div>
     </div>
@@ -114,7 +132,29 @@
         console.log(`Heyy, we're connected`);
     });
     ws.addEventListener('message', function (e) {
-        console.log(`Hey, got a message`, e);
+        var data = JSON.parse(e.data);
+        console.log(data);
+        if (data.temp == "high") {
+            $("#1temp_ok").addClass("hidden");
+            $("#1temp_hot").removeClass("hidden");
+        } else {
+            $("#1temp_ok").removeClass("hidden");
+            $("#1temp_hot").addClass("hidden");
+        }
+        if (data.leak == "wet") {
+            $("#1oil_ok").addClass("hidden");
+            $("#1oil_leak").removeClass("hidden");
+        } else {
+            $("#1oil_ok").removeClass("hidden");
+            $("#1oil_leak").addClass("hidden");
+        }
+        if (data.vibration == "high") {
+            $("#1vibr_ok").addClass("hidden");
+            $("#1vibr_high").removeClass("hidden");
+        } else {
+            $("#1vibr_ok").removeClass("hidden");
+            $("#1vibr_high").addClass("hidden");
+        }
     })
     ws.addEventListener('error', function (err) {
         console.log('Hey, something went wrong', err);
@@ -127,7 +167,46 @@
         console.log(`Heyy, we're connected`);
     });
     wsmovement.addEventListener('message', function (e) {
-        console.log(`Hey, got a message`, e);
+        var data = JSON.parse(e.data);
+        console.log(data);
+        if (data.temp == "high" || data.leak == "wet") {
+            $("#client_ok").addClass("hidden");
+            $("#client_warning").addClass("hidden");
+            $("#client_danger").removeClass("hidden");
+            $("#accordionClient").removeClass("hidden");
+        } else if (data.vibration == "high") {
+            $("#client_ok").addClass("hidden");
+            $("#client_warning").removeClass("hidden");
+            $("#client_danger").addClass("hidden");
+            $("#accordionClient").removeClass("hidden");
+        } else {
+            $("#client_ok").removeClass("hidden");
+            $("#client_warning").addClass("hidden");
+            $("#client_danger").addClass("hidden");
+            $("#accordionClient").addClass("hidden");
+        }
+       
+        if (data.temp == "high") {
+            $("#2temp_ok").addClass("hidden");
+            $("#2temp_hot").removeClass("hidden");
+        } else {
+            $("#2temp_ok").removeClass("hidden");
+            $("#2temp_hot").addClass("hidden");
+        }
+        if (data.leak == "wet") {
+            $("#2oil_ok").addClass("hidden");
+            $("#2oil_leak").removeClass("hidden");
+        } else {
+            $("#2oil_ok").removeClass("hidden");
+            $("#2oil_leak").addClass("hidden");
+        }
+        if (data.vibration == "high") {
+            $("#2vibr_ok").addClass("hidden");
+            $("#2vibr_high").removeClass("hidden");
+        } else {
+            $("#2vibr_ok").removeClass("hidden");
+            $("#2vibr_high").addClass("hidden");
+        }
     })
     wsmovement.addEventListener('error', function (err) {
         console.log('Hey, something went wrong', err);
