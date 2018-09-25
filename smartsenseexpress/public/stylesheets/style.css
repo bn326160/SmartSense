@@ -29,6 +29,7 @@ a {
   background-size: cover;*/
 }
 
+<<<<<<< HEAD
 .footer {
   position: absolute;
   bottom: 0;
@@ -73,4 +74,11 @@ a {
 
 .brown {
   color: brown;
+=======
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+>>>>>>> 31abf633532e6f4cea16f40c995c6d3194a5a5ed
 }
