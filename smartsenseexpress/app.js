@@ -12,6 +12,8 @@ var dashboard2Router = require('./routes/dashboard2');
 var statusRouter = require('./routes/status');
 var supportRouter = require('./routes/support');
 var teamRouter = require('./routes/team');
+var loginRouter = require('./routes/login');
+var clientRouter = require('./routes/client');
 
 var app = express();
 
@@ -34,6 +36,8 @@ app.use('/customerdashboard', dashboard2Router);
 app.use('/status', statusRouter);
 app.use('/support', supportRouter);
 app.use('/team', teamRouter);
+app.use('/login', loginRouter);
+app.use('/client', clientRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

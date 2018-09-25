@@ -33,7 +33,7 @@
 <!-- Content -->
 <div class="alert alert-success" role="alert">All systems are currently stable.</div>
 
-<h1>Leeds <span class="badge badge-success">Stable</span></h1>
+<h1>Leeds <small><span class="badge badge-success">Stable</span></small></h1>
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingOne">
@@ -89,7 +89,7 @@
 </div>
 
 <br>
-<h1>Glasgow <span class="badge badge-info">Under Construction</span></h1>
+<h1>Glasgow <small><span class="badge badge-info">Under Construction</span></small></h1>
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingThree">
@@ -115,9 +115,21 @@
     });
     ws.addEventListener('message', function (e) {
         console.log(`Hey, got a message`, e);
-        status = "All ok"
     })
     ws.addEventListener('error', function (err) {
+        console.log('Hey, something went wrong', err);
+    });
+</script>
+
+<script>
+    const wsmovement = new WebSocket('wss://' + 'smartsensemovement.eu-gb.mybluemix.net' + '/ws/alerts');
+    wsmovement.addEventListener('open', function () {
+        console.log(`Heyy, we're connected`);
+    });
+    wsmovement.addEventListener('message', function (e) {
+        console.log(`Hey, got a message`, e);
+    })
+    wsmovement.addEventListener('error', function (err) {
         console.log('Hey, something went wrong', err);
     });
 </script>

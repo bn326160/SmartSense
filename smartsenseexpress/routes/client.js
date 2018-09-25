@@ -3,12 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('status', {
-        title: 'Status',
-    });
+    res.render('client', { title: 'Client Dashboard' });
 });
 
 module.exports = router;
-
-
-//JSON.parse();
