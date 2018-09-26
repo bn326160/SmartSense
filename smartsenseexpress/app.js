@@ -16,6 +16,7 @@ var teamRouter = require('./routes/team');
 var loginRouter = require('./routes/login');
 var clientRouter = require('./routes/client');
 
+
 var app = express();
 
 // view engine setup

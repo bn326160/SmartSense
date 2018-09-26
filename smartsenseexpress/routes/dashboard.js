@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
         type: 'temporary',
         securables: [
             '6c57306d-aae5-43ad-b790-3cb941d0a3af',
-            '134be29b-63ff-4b1d-8c0c-9950c0642ccb'
+            '4bad0d7e-7bb4-43db-ab4c-9920689b7b6d'
         ],
         expiry: new Date(new Date().getTime() + 300 * 1000)
     }).then(function(result){
