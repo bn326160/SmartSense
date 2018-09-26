@@ -34,23 +34,23 @@
 <!-- Content -->
 <div class="alert alert-success" role="alert">All systems are currently stable.</div>
 
-<h2>Internal <small><span class="badge badge-success">Stable</span></small></h2>
-<h3>Leeds <small><span class="badge badge-success">Stable</span></small></h3>
+<h2>Internal <small><div class="statusbadge d-inline"></div></small></h2>
+<h3>Leeds <small><div class="statusbadge d-inline"></div></small></h3>
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Machine 1 <span class="badge badge-success">Stable</span>
+                    Machine 1 <div class="statusbadge d-inline"></div>
                 </button>
             </h5>
         </div>
 
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-                Temperature: <i id="1temp_ok" class="fas fa-thermometer-half green"></i> <i id="1temp_hot" class="fas fa-thermometer-full red"></i>
-                Vibration: <i id="1vibr_ok" class="fas fa-signature green"></i> <i id="1vibr_high" class="fas fa-signature red"></i>
-                Oil: <i id="1oil_ok" class="fas fa-tint green"></i> <i id="1oil_leak" class="fas fa-tint red"></i>
+                Temperature: <i id="1temp" class="fas fa-thermometer-half"></i> <!-- <i id="1temp_ok" class="fas fa-thermometer-half green"></i> <i id="1temp_hot" class="fas fa-thermometer-full red"></i> -->
+                Vibration: <i id="1vibr" class="fas fa-signature"></i> <!-- <i id="1vibr_ok" class="fas fa-signature green"></i> <i id="1vibr_high" class="fas fa-signature red"></i> -->
+                Oil: <i id="1oil" class="fas fa-tint"></i> <!-- <i id="1oil_ok" class="fas fa-tint green"></i> <i id="1oil_leak" class="fas fa-tint red"></i> -->
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
         <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Machine 2 <span class="badge badge-success">Demo</span>
+                    Machine 2 <span class="badge badge-info">Dummy</span>
                 </button>
             </h5>
         </div>
@@ -117,9 +117,9 @@
         </div>
         <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" aria-expanded="true" data-parent="#accordionExample">
             <div class="card-body">
-                Temperature: <i id="2temp_ok" class="fas fa-thermometer-half green"></i> <i id="2temp_hot" class="fas fa-thermometer-full red"></i>
-                Vibration: <i id="2vibr_ok" class="fas fa-signature green"></i> <i id="2vibr_high" class="fas fa-signature red"></i>
-                Oil: <i id="2oil_ok" class="fas fa-tint green"></i> <i id="2oil_leak" class="fas fa-tint red"></i>
+                Temperature: <i id="2temp" class="fas fa-thermometer-half"></i> <!-- <i id="2temp_ok" class="fas fa-thermometer-half green"></i> <i id="2temp_hot" class="fas fa-thermometer-full red"></i> -->
+                Vibration: <i id="2vibr" class="fas fa-signature"></i> <!-- <i id="2vibr_ok" class="fas fa-signature green"></i> <i id="2vibr_high" class="fas fa-signature red"></i> -->
+                Oil: <i id="2oil" class="fas fa-tint"></i> <!-- <i id="2oil_ok" class="fas fa-tint green"></i> <i id="2oil_leak" class="fas fa-tint red"></i> -->
             </div>
         </div>
     </div>
@@ -134,26 +134,72 @@
     ws.addEventListener('message', function (e) {
         var data = JSON.parse(e.data);
         console.log(data);
-        if (data.temp == "high") {
+
+        if (data.temp == "high" || data.leak == "wet") {
+            console.log("danger");
+            var x = document.getElementsByClassName("statusbadge");
+            var i;
+            for (i = 0; i < x.length; i++) {
+                x[i].innerHTML = "<span class=\"badge badge-danger\">Danger</span>";
+            }
+            //$("div.statusbadge").replaceWith("<span class=\"badge badge-danger\">Danger</span>");
+        } else if (data.vibration == "high") {
+            console.log("warning");
+            $("div.statusbadge").replaceWith("<span class=\"badge badge-warning\">Warning</span>");
+        } else {
+            console.log("ok");
+            var x = document.getElementsByClassName("statusbadge");
+            var i;
+            for (i = 0; i < x.length; i++) {
+                x[i].innerHTML = "<span class=\"badge badge-success\">Stable</span>";
+            }
+            //$("div.statusbadge").replaceWith("<span class=\"badge badge-success\">Stable</span>");
+        }
+
+        /*if (data.temp == "high") {
             $("#1temp_ok").addClass("hidden");
             $("#1temp_hot").removeClass("hidden");
         } else {
             $("#1temp_ok").removeClass("hidden");
             $("#1temp_hot").addClass("hidden");
+        }*/
+        if (data.temp == "high") {
+            $("#1temp").addClass("red");
+            $("#1temp").removeClass("green");
+        } else {
+            $("#1temp").removeClass("red");
+            $("#1temp").addClass("green");
         }
-        if (data.leak == "wet") {
+
+        /*if (data.leak == "wet") {
             $("#1oil_ok").addClass("hidden");
             $("#1oil_leak").removeClass("hidden");
         } else {
             $("#1oil_ok").removeClass("hidden");
             $("#1oil_leak").addClass("hidden");
+        }*/
+
+        if (data.leak == "wet") {
+            $("#1oil").addClass("red");
+            $("#1oil").removeClass("green");
+        } else {
+            $("#1oil").removeClass("red");
+            $("#1oil").addClass("green");
         }
-        if (data.vibration == "high") {
+
+        /*if (data.vibration == "high") {
             $("#1vibr_ok").addClass("hidden");
             $("#1vibr_high").removeClass("hidden");
         } else {
             $("#1vibr_ok").removeClass("hidden");
             $("#1vibr_high").addClass("hidden");
+        }*/
+        if (data.vibration == "high") {
+            $("#1vibr").addClass("red");
+            $("#1vibr").removeClass("green");
+        } else {
+            $("#1vibr").removeClass("red");
+            $("#1vibr").addClass("green");
         }
     })
     ws.addEventListener('error', function (err) {
@@ -167,6 +213,7 @@
     wsmovement.addEventListener('message', function (e) {
         var data = JSON.parse(e.data);
         console.log(data);
+
         if (data.temp == "high" || data.leak == "wet") {
             $("#client_ok").addClass("hidden");
             $("#client_warning").addClass("hidden");
@@ -184,7 +231,7 @@
             $("#accordionClient").addClass("hidden");
         }
 
-        if (data.temp == "high") {
+        /*if (data.temp == "high") {
             $("#2temp_ok").addClass("hidden");
             $("#2temp_hot").removeClass("hidden");
         } else {
@@ -204,6 +251,28 @@
         } else {
             $("#2vibr_ok").removeClass("hidden");
             $("#2vibr_high").addClass("hidden");
+        }*/
+
+        if (data.temp == "high") {
+            $("#2temp").addClass("red");
+            $("#2temp").removeClass("green");
+        } else {
+            $("#2temp").removeClass("red");
+            $("#2temp").addClass("green");
+        }
+        if (data.leak == "wet") {
+            $("#2oil").addClass("red");
+            $("#2oil").removeClass("green");
+        } else {
+            $("#2oil").removeClass("red");
+            $("#2oil").addClass("green");
+        }
+        if (data.vibration == "high") {
+            $("#2vibr").addClass("red");
+            $("#2vibr").removeClass("green");
+        } else {
+            $("#2vibr").removeClass("red");
+            $("#2vibr").addClass("green");
         }
     })
     wsmovement.addEventListener('error', function (err) {
