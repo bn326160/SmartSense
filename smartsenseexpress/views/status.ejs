@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/status.css'/>
 </head>
 <body>
 <!--Navbar-->
@@ -32,16 +33,16 @@
 </nav>
 
 <!-- Content -->
-<div class="alert alert-success" role="alert">All systems are currently stable.</div>
+<!-- div class="alert alert-success" role="alert">All systems are currently stable.</div> -->
 
-<h2>Internal <small><div class="statusbadge d-inline"></div></small></h2>
-<h3>Leeds <small><div class="statusbadge d-inline"></div></small></h3>
+<h2>Internal <small><div class="statusbadge d-inline"><span class="badge badge-primary"><i class="fas fa-sync fa-spin"></i></span></div></small></h2>
+<h3>Leeds <small><div class="statusbadge d-inline"><span class="badge badge-primary"><i class="fas fa-sync fa-spin"></i></span></div></small></h3>
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Machine 1 <div class="statusbadge d-inline"></div>
+                    Machine 1 <div class="statusbadge d-inline"><span class="badge badge-primary"><i class="fas fa-sync fa-spin"></i></span></div>
                 </button>
             </h5>
         </div>
@@ -79,7 +80,7 @@
         <div class="card-header" id="headingThree">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Machine 1 <span class="badge badge-dark">Offline</span>
+                    Machine 1 <span class="badge badge-info">Dummy</span>
                 </button>
             </h5>
         </div>
@@ -95,31 +96,41 @@
 
 <br>
 <h2>Client systems</h2>
+<div id="clientloading" class="fa-3x">
+    <!--<span class="badge badge-primary"><i class="fas fa-sync fa-spin orange"></i></span>-->
+    <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+    </div>
+</div>
+<div id="clientloaded" class="hidden">
+    <div id="client_ok" class="alert alert-primary" role="alert">
+        No alerts on client systems
+    </div>
+    <div id="client_warning" class="alert alert-warning" role="alert">
+        Check Ace Chemicals maintenence status!
+    </div>
+    <div id="client_danger" class="alert alert-danger" role="alert">
+        Danger at Ace Chemicals!
+    </div>
 
-<div id="client_ok" class="alert alert-primary" role="alert">
-    No alerts on client systems
-</div>
-<div id="client_warning" class="alert alert-warning" role="alert">
-    Check Ace Chemicals maintenence status!
-</div>
-<div id="client_danger" class="alert alert-danger" role="alert">
-    Danger at Ace Chemicals!
-</div>
-
-<div class="accordion" id="accordionClient">
-    <div class="card">
-        <div class="card-header" id="headingFour">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                    Ace Chemicals <span class="badge badge-dark">Offline</span>
-                </button>
-            </h5>
-        </div>
-        <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" aria-expanded="true" data-parent="#accordionExample">
-            <div class="card-body">
-                Temperature: <i id="2temp" class="fas fa-thermometer-half"></i> <!-- <i id="2temp_ok" class="fas fa-thermometer-half green"></i> <i id="2temp_hot" class="fas fa-thermometer-full red"></i> -->
-                Vibration: <i id="2vibr" class="fas fa-signature"></i> <!-- <i id="2vibr_ok" class="fas fa-signature green"></i> <i id="2vibr_high" class="fas fa-signature red"></i> -->
-                Oil: <i id="2oil" class="fas fa-tint"></i> <!-- <i id="2oil_ok" class="fas fa-tint green"></i> <i id="2oil_leak" class="fas fa-tint red"></i> -->
+    <div class="accordion" id="accordionClient">
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        Ace Chemicals <span class="badge badge-dark">Offline</span>
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" aria-expanded="true" data-parent="#accordionExample">
+                <div class="card-body">
+                    Temperature: <i id="2temp" class="fas fa-thermometer-half"></i> <!-- <i id="2temp_ok" class="fas fa-thermometer-half green"></i> <i id="2temp_hot" class="fas fa-thermometer-full red"></i> -->
+                    Vibration: <i id="2vibr" class="fas fa-signature"></i> <!-- <i id="2vibr_ok" class="fas fa-signature green"></i> <i id="2vibr_high" class="fas fa-signature red"></i> -->
+                    Oil: <i id="2oil" class="fas fa-tint"></i> <!-- <i id="2oil_ok" class="fas fa-tint green"></i> <i id="2oil_leak" class="fas fa-tint red"></i> -->
+                </div>
             </div>
         </div>
     </div>
@@ -136,23 +147,31 @@
         console.log(data);
 
         if (data.temp == "high" || data.leak == "wet") {
-            console.log("danger");
+            //console.log("danger");
             var x = document.getElementsByClassName("statusbadge");
             var i;
             for (i = 0; i < x.length; i++) {
                 x[i].innerHTML = "<span class=\"badge badge-danger\">Danger</span>";
             }
+            $('#collapseOne').collapse('show');
             //$("div.statusbadge").replaceWith("<span class=\"badge badge-danger\">Danger</span>");
         } else if (data.vibration == "high") {
-            console.log("warning");
-            $("div.statusbadge").replaceWith("<span class=\"badge badge-warning\">Warning</span>");
+            //console.log("warning");
+            var x = document.getElementsByClassName("statusbadge");
+            var i;
+            for (i = 0; i < x.length; i++) {
+                x[i].innerHTML = "<span class=\"badge badge-warning\">Warning</span>";
+            }
+            //$("statusbadge").replaceWith("<span class=\"badge badge-warning\">Warning</span>");
+            $('#collapseOne').collapse('show');
         } else {
-            console.log("ok");
+            //console.log("ok");
             var x = document.getElementsByClassName("statusbadge");
             var i;
             for (i = 0; i < x.length; i++) {
                 x[i].innerHTML = "<span class=\"badge badge-success\">Stable</span>";
             }
+            //$('#collapseOne').collapse('hide');
             //$("div.statusbadge").replaceWith("<span class=\"badge badge-success\">Stable</span>");
         }
 
@@ -213,6 +232,9 @@
     wsmovement.addEventListener('message', function (e) {
         var data = JSON.parse(e.data);
         console.log(data);
+
+        $('#clientloading').addClass("hidden");
+        $('#clientloaded').removeClass("hidden");
 
         if (data.temp == "high" || data.leak == "wet") {
             $("#client_ok").addClass("hidden");
