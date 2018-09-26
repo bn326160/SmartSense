@@ -33,7 +33,6 @@
 </nav>
 
 <!-- Content -->
-<!-- div class="alert alert-success" role="alert">All systems are currently stable.</div> -->
 
 <h2>Internal <small><div class="statusbadge d-inline"><span class="badge badge-success">Stable</span></div></small></h2>
 <h3>Leeds <small><div class="statusbadge d-inline"><span class="badge badge-success">Stable</span></div></small></h3>
@@ -49,9 +48,9 @@
 
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-                Temperature: <i id="1temp" class="fas fa-thermometer-half"></i> <!-- <i id="1temp_ok" class="fas fa-thermometer-half green"></i> <i id="1temp_hot" class="fas fa-thermometer-full red"></i> -->
-                Vibration: <i id="1vibr" class="fas fa-signature"></i> <!-- <i id="1vibr_ok" class="fas fa-signature green"></i> <i id="1vibr_high" class="fas fa-signature red"></i> -->
-                Oil: <i id="1oil" class="fas fa-tint"></i> <!-- <i id="1oil_ok" class="fas fa-tint green"></i> <i id="1oil_leak" class="fas fa-tint red"></i> -->
+                Temperature: <i id="1temp" class="fas fa-thermometer-half"></i>
+                Vibration: <i id="1vibr" class="fas fa-signature"></i>
+                Oil: <i id="1oil" class="fas fa-tint"></i>
             </div>
         </div>
     </div>
@@ -97,7 +96,6 @@
 <br>
 <h2>Client systems</h2>
 <div id="clientloading" class="fa-3x">
-    <!--<span class="badge badge-primary"><i class="fas fa-sync fa-spin orange"></i></span>-->
     <div class="sk-folding-cube">
         <div class="sk-cube1 sk-cube"></div>
         <div class="sk-cube2 sk-cube"></div>
@@ -144,17 +142,14 @@
     });
     ws.addEventListener('message', function (e) {
         var data = JSON.parse(e.data);
-        console.log(data);
 
         if (data.temp == "high" || data.leak == "wet") {
-            //console.log("danger");
             var x = document.getElementsByClassName("statusbadge");
             var i;
             for (i = 0; i < x.length; i++) {
                 x[i].innerHTML = "<span class=\"badge badge-danger\">Danger</span>";
             }
             $('#collapseOne').collapse('show');
-            //$("div.statusbadge").replaceWith("<span class=\"badge badge-danger\">Danger</span>");
         } else if (data.vibration == "high") {
             //console.log("warning");
             var x = document.getElementsByClassName("statusbadge");
@@ -162,26 +157,15 @@
             for (i = 0; i < x.length; i++) {
                 x[i].innerHTML = "<span class=\"badge badge-warning\">Warning</span>";
             }
-            //$("statusbadge").replaceWith("<span class=\"badge badge-warning\">Warning</span>");
             $('#collapseOne').collapse('show');
         } else {
-            //console.log("ok");
             var x = document.getElementsByClassName("statusbadge");
             var i;
             for (i = 0; i < x.length; i++) {
                 x[i].innerHTML = "<span class=\"badge badge-success\">Stable</span>";
             }
-            //$('#collapseOne').collapse('hide');
-            //$("div.statusbadge").replaceWith("<span class=\"badge badge-success\">Stable</span>");
         }
 
-        /*if (data.temp == "high") {
-            $("#1temp_ok").addClass("hidden");
-            $("#1temp_hot").removeClass("hidden");
-        } else {
-            $("#1temp_ok").removeClass("hidden");
-            $("#1temp_hot").addClass("hidden");
-        }*/
         if (data.temp == "high") {
             $("#1temp").addClass("red");
             $("#1temp").removeClass("green");
@@ -189,14 +173,6 @@
             $("#1temp").removeClass("red");
             $("#1temp").addClass("green");
         }
-
-        /*if (data.leak == "wet") {
-            $("#1oil_ok").addClass("hidden");
-            $("#1oil_leak").removeClass("hidden");
-        } else {
-            $("#1oil_ok").removeClass("hidden");
-            $("#1oil_leak").addClass("hidden");
-        }*/
 
         if (data.leak == "wet") {
             $("#1oil").addClass("red");
@@ -206,13 +182,6 @@
             $("#1oil").addClass("green");
         }
 
-        /*if (data.vibration == "high") {
-            $("#1vibr_ok").addClass("hidden");
-            $("#1vibr_high").removeClass("hidden");
-        } else {
-            $("#1vibr_ok").removeClass("hidden");
-            $("#1vibr_high").addClass("hidden");
-        }*/
         if (data.vibration == "high") {
             $("#1vibr").addClass("red");
             $("#1vibr").removeClass("green");
@@ -252,28 +221,6 @@
             $("#client_danger").addClass("hidden");
             $("#accordionClient").addClass("hidden");
         }
-
-        /*if (data.temp == "high") {
-            $("#2temp_ok").addClass("hidden");
-            $("#2temp_hot").removeClass("hidden");
-        } else {
-            $("#2temp_ok").removeClass("hidden");
-            $("#2temp_hot").addClass("hidden");
-        }
-        if (data.leak == "wet") {
-            $("#2oil_ok").addClass("hidden");
-            $("#2oil_leak").removeClass("hidden");
-        } else {
-            $("#2oil_ok").removeClass("hidden");
-            $("#2oil_leak").addClass("hidden");
-        }
-        if (data.vibration == "high") {
-            $("#2vibr_ok").addClass("hidden");
-            $("#2vibr_high").removeClass("hidden");
-        } else {
-            $("#2vibr_ok").removeClass("hidden");
-            $("#2vibr_high").addClass("hidden");
-        }*/
 
         if (data.temp == "high") {
             $("#2temp").addClass("red");
